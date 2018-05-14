@@ -5,10 +5,10 @@ package com.intuit.cg.backendtechassessment.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -54,7 +54,7 @@ public class ProjBidRepository<T extends Identifiable> {
 	public List<Seller> findAllSellers() {
 		return jdbcTemplate.query("select * from Seller", new SellerRowMapper());
 	}
-
+	
 	public Seller findSellerById(long sid) {
 		
 		return jdbcTemplate.queryForObject("select * from seller where sid=?", new Object[] {sid},
@@ -86,7 +86,7 @@ public class ProjBidRepository<T extends Identifiable> {
 		return jdbcTemplate.query("select * from Buyer", new BuyerRowMapper());
 	}
 
-	public Buyer findById(long bid) {
+	public Buyer findBuyerById(long bid) {
 		
 		return jdbcTemplate.queryForObject("select * from Buyer where bid=?", new Object[] {bid},
 				new BuyerRowMapper());
@@ -103,7 +103,7 @@ public class ProjBidRepository<T extends Identifiable> {
 
 	class ProjectRowMapper implements RowMapper<Project> {
 
-		@Override
+	
 		public Project mapRow(ResultSet proj, int rowNum) throws SQLException {
 		
 			Project project = new Project();
@@ -123,10 +123,9 @@ public class ProjBidRepository<T extends Identifiable> {
 	public List<Project> findAllProjects() {
 		return jdbcTemplate.query("select * from project", new ProjectRowMapper());
 	}
-
+	
 	public Project findProjectById(long pid) {
-		//@TODO get the lowest bid for the project
-		return jdbcTemplate.queryForObject("select proj.PID, proj.PNAME, proj.PDESC, proj.MAX_BUDGET, proj.TIME_LIMIT, proj.STATUS, buy.BNAME, MIN(bid.bid_amount) from project proj, buyer buy, bids bid where proj.pid=? and proj.pid = bid.pid and bid.bid = buy.bid groupby bid.bid_id", new Object[] {pid},
+		return jdbcTemplate.queryForObject("select proj.PID, proj.PNAME,  proj.MAX_BUDGET, proj.PSTATUS, buy.BNAME, MIN(bid.bid_amount) As BidAmount from project proj, buyer buy, bids bid where proj.pid=? and proj.pid = bid.pid and bid.bid = buy.bid  group by proj.PID;", new Object[] {pid},
 				new ProjectRowMapper());
 	}
 
@@ -141,7 +140,7 @@ public class ProjBidRepository<T extends Identifiable> {
 	public int insert(Project project) throws Exception, SQLException {
 //		if(sellerExists(project.getsID())) {
 		LocalDate cDate = LocalDate.now();
-		//LocalDate pTimeLimit;
+		project.setID(uniIDGenerator.getNextId());
 		String pstatus = null;
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		if (cDate.isBefore(LocalDate.parse(project.getpTimeLimit(),formatter)))
@@ -188,7 +187,8 @@ public class ProjBidRepository<T extends Identifiable> {
 
 	public int insert(Bid bid) {
 		bid.setID(uniIDGenerator.getNextId());
-		return jdbcTemplate.update("insert into BID (BID_ID, BID_AMOUNT, BID, PID) " + "values(?, ?, ?, ?)",
+		return jdbcTemplate.update("insert into BIDS (BID_ID, BID_AMOUNT, BID, PID) " + "values(?, ?, ?, ?)",
 				new Object[] { bid.getId(), bid.getbAmount(), bid.getBuyID(), bid.getProjID() });
 	}
+
 }

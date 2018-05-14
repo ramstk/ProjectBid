@@ -72,7 +72,7 @@ public List<Buyer> findAllBuyers(){
 @RequestMapping (BUYERS + "/{bID}")
 public Buyer findBuyerById(@PathVariable long bID) {
 	
-	return brepo.findById(bID);
+	return brepo.findBuyerById(bID);
 }
 @RequestMapping(method = RequestMethod.POST, consumes = "application/json", value = BUYERS)
 public int addBuyer(@RequestBody Buyer buyer) {
