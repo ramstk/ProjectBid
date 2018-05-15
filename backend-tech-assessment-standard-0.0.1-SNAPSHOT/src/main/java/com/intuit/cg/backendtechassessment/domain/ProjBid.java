@@ -1,24 +1,14 @@
-/**
- * 
- */
 package com.intuit.cg.backendtechassessment.domain;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-/**
- * @author RAM
- *
- */
-
-public class Project implements Identifiable {
-
+public class ProjBid implements Identifiable {
 	private Long pid;
 	@NotNull
 	@NotBlank
@@ -38,23 +28,8 @@ public class Project implements Identifiable {
 	@NotBlank
 	private Long sID;
 	private String pStatus;
-
-	/**
-	 * @return the pid
-	 */
-	@Override
-	@Valid
-	public Long getId() {
-
-		return pid;
-	}
-
-	@Override
-	public void setID(Long pid) {
-
-		this.pid = pid;
-
-	}
+	private String bName;
+	private Double bAmount;
 
 	/**
 	 * @return the pName
@@ -101,9 +76,6 @@ public class Project implements Identifiable {
 		this.maxBudget = maxBudget;
 	}
 
-	@NotNull
-	@NotBlank
-	@JsonFormat(pattern = "yyyy-MM-dd")
 	/**
 	 * @return the pTimeLimit
 	 */
@@ -122,7 +94,7 @@ public class Project implements Identifiable {
 	/**
 	 * @return the sID
 	 */
-	public long getsID() {
+	public Long getsID() {
 		return sID;
 	}
 
@@ -130,16 +102,14 @@ public class Project implements Identifiable {
 	 * @param sID
 	 *            the sID to set
 	 */
-	public void setsID(long sID) {
-
+	public void setsID(Long sID) {
 		this.sID = sID;
 	}
 
 	/**
-	 * @return the pstatus
+	 * @return the pStatus
 	 */
 	public String getpStatus() {
-
 		return pStatus;
 	}
 
@@ -147,8 +117,49 @@ public class Project implements Identifiable {
 	 * @param pStatus
 	 *            the pStatus to set
 	 */
-	public void setpStatus(String pstatus) {
-		this.pStatus = pstatus;
+	public void setpStatus(String pStatus) {
+		this.pStatus = pStatus;
 	}
 
+	/**
+	 * @return the bName
+	 */
+	public String getbName() {
+		return bName;
+	}
+
+	/**
+	 * @param bName
+	 *            the bName to set
+	 */
+	public void setbName(String bName) {
+		this.bName = bName;
+	}
+
+	/**
+	 * @return the bAmount
+	 */
+	public Double getbAmount() {
+		return bAmount;
+	}
+
+	/**
+	 * @param bAmount
+	 *            the bAmount to set
+	 */
+	public void setbAmount(Double bAmount) {
+		this.bAmount = bAmount;
+	}
+
+	public Long getId() {
+
+		return pid;
+	}
+
+	@Override
+	public void setID(Long pid) {
+
+		this.pid = pid;
+
+	}
 }

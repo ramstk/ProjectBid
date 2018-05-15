@@ -10,15 +10,15 @@ package com.intuit.cg.backendtechassessment.domain;
 public class Seller implements Identifiable {
 	private Long sid;
 	private String sName;
-	
+
 	public Long getId() {
-		
+
 		return sid;
 	}
 
 	@Override
 	public void setID(Long sid) {
-		
+
 		this.sid = sid;
 
 	}
@@ -31,16 +31,16 @@ public class Seller implements Identifiable {
 	}
 
 	/**
-	 * @param sName the sName to set
+	 * @param sName
+	 *            the sName to set
 	 */
 	public void setsName(String sName) {
 		this.sName = sName;
 	}
 
 	@Override
-    public String toString() {
-        return String.format("Seller {ID=%s, name=%s}", sid, sName);
-    }
-	
+	public String toString() {
+		return String.format("Seller {ID=%s, name=%s}", sid, sName);
+	}
 
 }

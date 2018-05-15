@@ -11,5 +11,5 @@ package com.intuit.cg.backendtechassessment.domain;
 public interface Identifiable extends org.springframework.hateoas.Identifiable<Long> {
 
 	public void setID(Long id);
-	
+
 }
