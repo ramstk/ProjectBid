@@ -1,5 +1,10 @@
 # ProjectBid
 Marketplace for Self-Employed
+Exercise Difficulty:  Moderate
+How did you feel about the exercise itself? (7)
+How do you feel about coding an exercise as a step in the interview process? (9)
+What would you change in the exercise and/or process? None
+
 APIs for inserting and retrieval of Buyer, Seller, Projects and Bidding for projects using Spring Boot and Java. The web service uses in-memory data storage using H2 Database. The Unique ID Generator is marked as a @Component which allows the Spring Boot to recognize the generator class as an injectable coponent.
 ************************
 Controller: http://localhost:8080/buyers
