@@ -1,12 +1,14 @@
 /**
- * 
+ * Bean for displaying Seller details with basic Seller information along with getters, setters and toString method
  */
 package com.intuit.cg.backendtechassessment.domain;
+
 
 /**
  * @author RAM
  *
  */
+
 public class Seller implements Identifiable {
 	private Long sid;
 	private String sName;

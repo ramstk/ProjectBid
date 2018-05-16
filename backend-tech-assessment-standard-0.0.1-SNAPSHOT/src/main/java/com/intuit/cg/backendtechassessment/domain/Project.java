@@ -1,6 +1,5 @@
 /**
- * 
- */
+ * Bean for displaying Project details with basic project information along with getters, setters  */
 package com.intuit.cg.backendtechassessment.domain;
 
 import java.time.LocalDate;

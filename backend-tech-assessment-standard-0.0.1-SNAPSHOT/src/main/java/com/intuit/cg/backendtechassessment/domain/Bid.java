@@ -1,3 +1,6 @@
+/**
+ * Bean for displaying Bid details with basic bid information along with getters, setters and toString method
+ */
 package com.intuit.cg.backendtechassessment.domain;
 
 public class Bid implements Identifiable {

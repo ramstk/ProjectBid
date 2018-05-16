@@ -1,5 +1,5 @@
 /**
- * 
+ * To ensure that multiple id calls do not interfere
  */
 package com.intuit.cg.backendtechassessment.test.unitTest;
 
@@ -22,7 +22,7 @@ import com.intuit.cg.backendtechassessment.repository.UniIDGen;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
-public class UniqueIDGenerator {
+public class UniqueIDGeneratorTest {
 
 	@Autowired
 	private UniIDGen generator1;

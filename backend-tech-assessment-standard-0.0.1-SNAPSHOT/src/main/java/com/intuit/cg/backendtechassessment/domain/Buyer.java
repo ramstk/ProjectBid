@@ -1,5 +1,5 @@
 /**
- * 
+ * Bean for displaying Buyer details with basic buyer information along with getters, setters and toString method
  */
 package com.intuit.cg.backendtechassessment.domain;
 
