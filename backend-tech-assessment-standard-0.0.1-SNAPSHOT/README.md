@@ -98,7 +98,7 @@ Obtains the bid associated with the given ID. If the bid can be found, an HTTP 2
 Controller: http://localhost:8080/backendtechassessment/autoBid/
 ************************
 POST
-/backendtechassessment//autoBid/1/0
+/backendtechassessment//autoBid/Project_ID/Buyer_ID
 Creates a new bid. This request should carry the project id and buyer id as the path variables for which the bid is being inserted. If the bid is created, an HTTP 200 (OK) status is returned along with the int value 1 in the response body.
 The auto-bid retrieves the minimum bid amount for the given project ID and calculates a random amount which is less than the existing minimum bid amount.
 
